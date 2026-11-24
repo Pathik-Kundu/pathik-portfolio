@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pathik Kundu | Software Engineer &amp; AI/ML Researcher</title>
+  <meta name="description" content="Portfolio of Pathik Kundu — CSE Undergraduate at United International University (CGPA 3.77/4.00), Software Engineer, and AI/ML, NLP & LLM Evaluation Researcher." />
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            midnight: {
+              800: '#162033',
+              850: '#101827',
+              900: '#0b1120',
+              950: '#070b14',
+            }
+          },
+          boxShadow: {
+            'glow-cyan': '0 0 28px -6px rgba(6, 182, 212, 0.30)',
+            'glow-indigo': '0 0 28px -6px rgba(99, 102, 241, 0.30)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Subtle architectural grid background */
+    .bg-grid-pattern {
+      background-size: 36px 36px;
+      background-image:
+        linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    }
+    .dark .bg-grid-pattern {
+      background-image:
+        linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+    }
+
+    /* Smooth anchor offset for sticky navbar */
+    section[id] {
+      scroll-margin-top: 84px;
+    }
+
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(100, 116, 139, 0.35);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(6, 182, 212, 0.55);
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-midnight-950 dark:text-slate-100 font-sans antialiased selection:bg-cyan-500/30 selection:text-cyan-200 transition-colors duration-300">
+
+  <!-- ==================== STICKY NAVIGATION BAR ==================== -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/80 dark:bg-midnight-950/80 border-b border-slate-200/80 dark:border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Brand Logo -->
+      <a href="#about" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+          PK
+        </div>
+        <div class="leading-tight">
+          <div class="font-bold text-sm sm:text-base text-slate-900 dark:text-white tracking-tight">Pathik Kundu</div>
+          <div class="text-[11px] font-mono text-slate-500 dark:text-slate-400">SWE &bull; AI/ML</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">About</a>
+        <a href="#skills" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Skills</a>
+        <a href="#projects" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Projects</a>
+        <a href="#research" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Research</a>
+        <a href="#honors" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Honors</a>
+        <a href="#contact" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Action Buttons: Copy Email & Theme Toggle -->
+      <div class="flex items-center gap-2.5">
+        <button type="button" onclick="copyEmail()" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 flex items-center gap-2 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span>Copy Email</span>
+        </button>
+
+        <button type="button" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Light/Dark Theme" class="p-2.5 rounded-xl bg-slate-100 dark:bg-midnight-850 hover:bg-slate-200 dark:hover:bg-midnight-800 text-amber-500 dark:text-amber-400 border border-slate-200 dark:border-slate-700/80 transition-colors">
+          <!-- Sun Icon (shown in dark mode) -->
+          <svg id="sunIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <!-- Moon Icon (shown in light mode) -->
+          <svg id="moonIcon" class="w-4 h-4 hidden text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Strip -->
+    <nav class="md:hidden flex items-center justify-around py-2 px-3 border-t border-slate-200/70 dark:border-slate-800/70 text-xs font-medium text-slate-600 dark:text-slate-300 overflow-x-auto">
+      <a href="#about" class="px-2 py-1 hover:text-cyan-400">About</a>
+      <a href="#skills" class="px-2 py-1 hover:text-cyan-400">Skills</a>
+      <a href="#projects" class="px-2 py-1 hover:text-cyan-400">Projects</a>
+      <a href="#research" class="px-2 py-1 hover:text-cyan-400">Research</a>
+      <a href="#honors" class="px-2 py-1 hover:text-cyan-400">Honors</a>
+      <a href="#contact" class="px-2 py-1 hover:text-cyan-400">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ==================== HERO & INTERACTIVE TERMINAL SECTION ==================== -->
+  <div class="relative bg-grid-pattern border-b border-slate-200/70 dark:border-slate-800/70 overflow-hidden">
+    <!-- Ambient Radial Glows -->
+    <div class="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-cyan-500/10 blur-3xl"></div>
+    <div class="pointer-events-none absolute top-16 right-0 w-96 h-96 rounded-full bg-indigo-500/10 blur-3xl"></div>
+
+    <section id="about" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+        <!-- Left Column: Identity, Metrics & CTAs -->
+        <div class="lg:col-span-7 space-y-6">
+          <!-- Status Pill -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-xs font-mono text-cyan-700 dark:text-cyan-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Dhaka, Bangladesh &bull; UIU CSE (CGPA 3.77/4.00)</span>
+          </div>
+
+          <!-- Name & Role -->
+          <div class="space-y-2">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+              Pathik Kundu
+            </h1>
+            <p class="text-xl sm:text-2xl font-bold text-cyan-600 dark:text-cyan-400">
+              Software Engineer &amp; AI/ML Researcher
+            </p>
+          </div>
+
+          <!-- Bio Summary -->
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+            CSE Undergraduate at United International University (<strong class="text-slate-900 dark:text-white font-semibold">CGPA 3.77/4.00</strong>) building end-to-end web/API applications, machine learning pipelines, and LLM evaluation benchmarks.
+          </p>
+
+          <!-- 4 Metric Stat Cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+            <div class="p-4 rounded-2xl bg-white/80 dark:bg-midnight-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80">
+              <div class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
+                3.77<span class="text-xs font-normal text-slate-400">/4.00</span>
+              </div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">UIU CSE CGPA</div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/80 dark:bg-midnight-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80">
+              <div class="text-xl sm:text-2xl font-extrabold text-cyan-600 dark:text-cyan-400">
+                4 Papers
+              </div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">1 Sub. + 3 Ong. (3 1st)</div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/80 dark:bg-midnight-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80">
+              <div class="text-xl sm:text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">
+                5x Scholar
+              </div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">UIU Merit Waivers</div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/80 dark:bg-midnight-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80">
+              <div class="text-xl sm:text-2xl font-extrabold text-indigo-600 dark:text-indigo-400">
+                2nd Runner
+              </div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">CSE Project Show</div>
+            </div>
+          </div>
+
+          <!-- Primary CTA Buttons & Social Icons -->
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="#projects" class="px-5 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 shadow-glow-cyan transition-all">
+              View Projects
+            </a>
+            <a href="#research" class="px-5 py-3 rounded-xl text-sm font-semibold bg-white dark:bg-midnight-850 hover:bg-slate-100 dark:hover:bg-midnight-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 transition-colors">
+              Explore Research
+            </a>
+            <a href="https://github.com/Pathik-Kundu" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="p-3 rounded-xl bg-white dark:bg-midnight-850 hover:bg-slate-100 dark:hover:bg-midnight-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/pathik-kundu-298b441a4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="p-3 rounded-xl bg-white dark:bg-midnight-850 hover:bg-slate-100 dark:hover:bg-midnight-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive CLI Terminal Widget -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl bg-slate-900 dark:bg-midnight-900 border border-slate-800 shadow-2xl overflow-hidden">
+            <!-- Terminal Header Bar -->
+            <div class="px-4 py-3 bg-slate-950/90 dark:bg-midnight-950/90 border-b border-slate-800 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                <span class="ml-2 text-xs font-mono text-slate-400">pathik@uiu-cse: ~/portfolio</span>
+              </div>
+              <button type="button" onclick="runTerminalCommand('clear')" class="text-xs font-mono text-slate-400 hover:text-cyan-400 transition-colors">clear</button>
+            </div>
+
+            <!-- Preset Command Pills -->
+            <div class="px-3.5 py-2.5 bg-slate-900/90 dark:bg-midnight-950/60 border-b border-slate-800 flex flex-wrap gap-1.5">
+              <button type="button" onclick="runTerminalCommand('about')" class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 hover:bg-cyan-500/20 text-cyan-300 border border-slate-700 hover:border-cyan-500/40 transition-colors">about</button>
+              <button type="button" onclick="runTerminalCommand('skills')" class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 hover:bg-indigo-500/20 text-indigo-300 border border-slate-700 hover:border-indigo-500/40 transition-colors">skills</button>
+              <button type="button" onclick="runTerminalCommand('projects')" class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 hover:bg-emerald-500/20 text-emerald-300 border border-slate-700 hover:border-emerald-500/40 transition-colors">projects</button>
+              <button type="button" onclick="runTerminalCommand('research')" class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 hover:bg-purple-500/20 text-purple-300 border border-slate-700 hover:border-purple-500/40 transition-colors">research</button>
+              <button type="button" onclick="runTerminalCommand('honors')" class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 hover:bg-amber-500/20 text-amber-300 border border-slate-700 hover:border-amber-500/40 transition-colors">honors</button>
+              <button type="button" onclick="runTerminalCommand('contact')" class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 hover:bg-cyan-500/20 text-cyan-300 border border-slate-700 hover:border-cyan-500/40 transition-colors">contact</button>
+            </div>
+
+            <!-- Terminal Output Log -->
+            <div id="terminalOutput" class="p-4 h-64 overflow-y-auto font-mono text-xs sm:text-[13px] leading-relaxed text-slate-300 space-y-3">
+              <div class="text-slate-400">
+                Welcome to Pathik's interactive CLI. Click a pill above or type <span class="text-cyan-400">help</span>.
+              </div>
+              <div>
+                <div class="text-emerald-400">pathik@uiu-cse:~$ <span class="text-white">about</span></div>
+                <div class="mt-1 pl-2 border-l-2 border-cyan-500/50 text-slate-200">
+                  <span class="text-cyan-300 font-semibold">Pathik Kundu</span> — Software Engineer &amp; AI/ML Researcher.<br/>
+                  Education: B.Sc. in CSE @ United International University (CGPA: 3.77/4.00, Exp. Feb 2027).<br/>
+                  Focus: End-to-end Python/Web apps, REST APIs, ML pipelines &amp; LLM Evaluation.
+                </div>
+              </div>
+            </div>
+
+            <!-- Terminal Input Prompt -->
+            <form onsubmit="handleTerminalSubmit(event)" class="px-4 py-3 bg-slate-950/80 dark:bg-midnight-950 border-t border-slate-800 flex items-center gap-2 font-mono text-xs">
+              <span class="text-emerald-400 shrink-0">pathik@uiu-cse:~$</span>
+              <input id="terminalInput" type="text" autocomplete="off" placeholder="Type 'help', 'research', 'projects'..." class="w-full bg-transparent text-slate-100 placeholder-slate-500 focus:outline-none" />
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-20">
+
+    <!-- ==================== INTERACTIVE TECHNICAL SKILLS MATRIX ==================== -->
+    <section id="skills" class="space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-cyan-600 dark:text-cyan-400">Technical Arsenal</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">Interactive Technical Skills Matrix</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Filter by category or search across software engineering, ML, research, and AI tooling.</p>
+        </div>
+
+        <!-- Search Input -->
+        <div class="relative w-full md:w-72">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input id="skillSearchInput" type="text" oninput="filterSkills()" placeholder="Search Python, PyTorch, MySQL..." class="w-full pl-10 pr-4 py-2 rounded-xl text-sm bg-white dark:bg-midnight-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-cyan-500 transition-colors" />
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap gap-2" id="skillTabs">
+        <button type="button" onclick="selectSkillCategory('all')" data-skill-tab="all" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-cyan-600 text-white shadow-sm transition-all">All</button>
+        <button type="button" onclick="selectSkillCategory('languages')" data-skill-tab="languages" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-all">Programming Languages</button>
+        <button type="button" onclick="selectSkillCategory('ml-dl')" data-skill-tab="ml-dl" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-all">ML &amp; Deep Learning</button>
+        <button type="button" onclick="selectSkillCategory('data-research')" data-skill-tab="data-research" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-all">Data &amp; Research</button>
+        <button type="button" onclick="selectSkillCategory('web-apis')" data-skill-tab="web-apis" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-all">Web, APIs &amp; Deployment</button>
+        <button type="button" onclick="selectSkillCategory('tools-ai')" data-skill-tab="tools-ai" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-all">Databases, DevOps &amp; AI Tools</button>
+      </div>
+
+      <!-- Static-Rendered Skill Cards Grid -->
+      <div id="skillsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Card 1: Programming Languages -->
+        <div data-category="languages" class="skill-card p-5 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 hover:border-cyan-500/40 transition-all">
+          <div class="flex items-center justify-between mb-3.5">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Programming Languages</h3>
+            <span class="skill-count text-xs font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">4</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Python</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Java</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">C</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Machine Learning & Deep Learning -->
+        <div data-category="ml-dl" class="skill-card p-5 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 hover:border-cyan-500/40 transition-all">
+          <div class="flex items-center justify-between mb-3.5">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Machine Learning &amp; Deep Learning</h3>
+            <span class="skill-count text-xs font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">8</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">PyTorch</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">scikit-learn</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Supervised &amp; Unsupervised Learning</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Neural Networks</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">NLP Fundamentals</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Computer Vision</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">TensorFlow/Keras (Basic)</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Model Evaluation</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Data & Research Engineering -->
+        <div data-category="data-research" class="skill-card p-5 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 hover:border-cyan-500/40 transition-all">
+          <div class="flex items-center justify-between mb-3.5">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Data &amp; Research Engineering</h3>
+            <span class="skill-count text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">10</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">NumPy</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Pandas</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Data Preprocessing</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Data Cleaning</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Feature Engineering</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Feature Selection</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Human Annotation</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Dataset Quality Review</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Experimental Measurement (EnergiBridge)</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Pickle</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Web, APIs & Deployment -->
+        <div data-category="web-apis" class="skill-card p-5 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 hover:border-cyan-500/40 transition-all">
+          <div class="flex items-center justify-between mb-3.5">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Web, APIs &amp; Deployment</h3>
+            <span class="skill-count text-xs font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">10</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">REST APIs</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Gemini REST API</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Requests</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Beautiful Soup</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">HTML</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">CSS</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">JSON</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Regular Expressions</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Gradio</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Hugging Face Spaces</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Databases, DevOps & AI Tools -->
+        <div data-category="tools-ai" class="skill-card md:col-span-2 p-5 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 hover:border-cyan-500/40 transition-all">
+          <div class="flex items-center justify-between mb-3.5">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Databases, DevOps &amp; AI Tools</h3>
+            <span class="skill-count text-xs font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">9</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">MySQL</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Git</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">GitHub</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Jupyter Notebook</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Google Colab</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Claude Code</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Gemini</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Codex</span>
+            <span class="skill-pill px-3 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">Prompt Engineering</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty Search State -->
+      <div id="skillsEmptyState" class="hidden p-8 text-center rounded-2xl bg-white/60 dark:bg-midnight-900/60 border border-slate-200 dark:border-slate-800 text-sm text-slate-500">
+        No skills matched your search query. Try searching <span class="font-mono text-cyan-500">Python</span>, <span class="font-mono text-cyan-500">PyTorch</span>, <span class="font-mono text-cyan-500">MySQL</span>, or <span class="font-mono text-cyan-500">REST APIs</span>.
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED PROJECTS SECTION ==================== -->
+    <section id="projects" class="space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-cyan-600 dark:text-cyan-400">Engineering &amp; Applied Systems</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">Featured Projects</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Click any project's Architecture &amp; Details button to inspect system pipelines and outcomes.</p>
+        </div>
+
+        <!-- Project Filter Tabs -->
+        <div class="flex flex-wrap gap-2">
+          <button type="button" onclick="filterProjects('all')" data-proj-filter="all" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-cyan-600 text-white shadow-sm transition-all">All (3)</button>
+          <button type="button" onclick="filterProjects('ai-ml')" data-proj-filter="ai-ml" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-all">AI &amp; ML</button>
+          <button type="button" onclick="filterProjects('web-api')" data-proj-filter="web-api" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-all">Web &amp; APIs</button>
+          <button type="button" onclick="filterProjects('embedded')" data-proj-filter="embedded" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-all">Embedded / IoT</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid Container -->
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Populated on load from PROJECTS array -->
+      </div>
+    </section>
+
+    <!-- ==================== RESEARCH EXPERIENCE & MANUSCRIPTS ==================== -->
+    <section id="research" class="space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Publications &amp; Manuscripts</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">Research Experience &amp; Manuscripts</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Filter by publication stage or click any manuscript card to inspect detailed methodology and datasets.</p>
+        </div>
+
+        <!-- Research Stage Filter Buttons -->
+        <div class="flex flex-wrap gap-2" id="researchFilters">
+          <button type="button" onclick="filterResearch('all')" data-res-filter="all" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600 text-white shadow-sm transition-all">All (4)</button>
+          <button type="button" onclick="filterResearch('submitted')" data-res-filter="submitted" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-indigo-500/50 transition-all">Submitted</button>
+          <button type="button" onclick="filterResearch('working')" data-res-filter="working" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-indigo-500/50 transition-all">Working Papers</button>
+          <button type="button" onclick="filterResearch('ongoing')" data-res-filter="ongoing" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-indigo-500/50 transition-all">Ongoing</button>
+        </div>
+      </div>
+
+      <!-- Research Manuscripts Grid (All 4 Manuscripts Visible by Default) -->
+      <div id="researchGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Paper 1 -->
+        <article data-res-status="submitted" onclick="openResearchModal('energy-os')" class="research-card cursor-pointer group flex flex-col justify-between p-6 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 hover:border-indigo-500/50 hover:shadow-glow-indigo hover:-translate-y-1 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">Submitted &bull; Conference Manuscript</span>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20">Sustainable Computing</span>
+            </div>
+
+            <div>
+              <div class="text-xs font-mono font-semibold text-indigo-600 dark:text-indigo-400 mb-1">Role: First Author &bull; Conference Manuscript</div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
+                Workload-Based Energy Efficiency Analysis of Native and Virtualized Operating Systems for Sustainable Computing: An Experimental Study on Modern Computing Platforms
+              </h3>
+            </div>
+
+            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc pl-5">
+              <li>Conducted energy-consumption measurements using <strong>EnergiBridge</strong> across Windows, macOS, and Linux environments.</li>
+              <li>Benchmarked native and virtualized operating systems under controlled workloads.</li>
+            </ul>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs sm:text-sm font-semibold text-indigo-600 dark:text-indigo-400 group-hover:underline flex items-center gap-1">
+              <span>Inspect Methodology &amp; Setup</span>
+              <span aria-hidden="true">&rarr;</span>
+            </span>
+            <span class="text-xs font-mono text-slate-400">EnergiBridge &bull; Cross-OS</span>
+          </div>
+        </article>
+
+        <!-- Paper 2 -->
+        <article data-res-status="working" onclick="openResearchModal('breast-cancer')" class="research-card cursor-pointer group flex flex-col justify-between p-6 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 hover:border-indigo-500/50 hover:shadow-glow-indigo hover:-translate-y-1 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/25">Working Paper</span>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20">Medical AI</span>
+            </div>
+
+            <div>
+              <div class="text-xs font-mono font-semibold text-indigo-600 dark:text-indigo-400 mb-1">Role: First Author</div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
+                Radiological Metadata and Deep Image Feature Analysis for Breast Cancer Classification: An Explainable Multimodal Evaluation on CBIS-DDSM
+              </h3>
+            </div>
+
+            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc pl-5">
+              <li>Performed preprocessing, feature selection, and hyperparameter tuning for the tabular-data modeling component.</li>
+              <li>Trained and evaluated <strong>SVM, Logistic Regression, Random Forest, Gradient Boosting, and K-Nearest Neighbors (KNN)</strong> classifiers.</li>
+            </ul>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs sm:text-sm font-semibold text-indigo-600 dark:text-indigo-400 group-hover:underline flex items-center gap-1">
+              <span>Inspect Methodology &amp; Setup</span>
+              <span aria-hidden="true">&rarr;</span>
+            </span>
+            <span class="text-xs font-mono text-slate-400">CBIS-DDSM &bull; Explainable AI</span>
+          </div>
+        </article>
+
+        <!-- Paper 3 -->
+        <article data-res-status="working" onclick="openResearchModal('banglish-llm')" class="research-card cursor-pointer group flex flex-col justify-between p-6 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 hover:border-indigo-500/50 hover:shadow-glow-indigo hover:-translate-y-1 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/25">Working Paper</span>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20">NLP &amp; LLM Evaluation</span>
+            </div>
+
+            <div>
+              <div class="text-xs font-mono font-semibold text-indigo-600 dark:text-indigo-400 mb-1">Role: First Author</div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
+                Can LLM Judges Evaluate Banglish? A Meta-Evaluation of Automatic Evaluators on Romanized Code-Mixed Bangla
+              </h3>
+            </div>
+
+            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc pl-5">
+              <li>Prepared the evaluation pipeline and conducted human annotation and dataset verification.</li>
+              <li>Curating a human-verified gold dataset alongside an AI-annotated silver dataset under established annotation guidelines.</li>
+            </ul>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs sm:text-sm font-semibold text-indigo-600 dark:text-indigo-400 group-hover:underline flex items-center gap-1">
+              <span>Inspect Methodology &amp; Setup</span>
+              <span aria-hidden="true">&rarr;</span>
+            </span>
+            <span class="text-xs font-mono text-slate-400">LLM-as-a-Judge &bull; Banglish</span>
+          </div>
+        </article>
+
+        <!-- Paper 4 -->
+        <article data-res-status="ongoing" onclick="openResearchModal('meme-analysis')" class="research-card cursor-pointer group flex flex-col justify-between p-6 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 hover:border-indigo-500/50 hover:shadow-glow-indigo hover:-translate-y-1 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-500/25">Ongoing Research</span>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20">Multimodal Vision</span>
+            </div>
+
+            <div>
+              <div class="text-xs font-mono font-semibold text-indigo-600 dark:text-indigo-400 mb-1">Status: Ongoing Research</div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
+                Context-Wise Multimodal Meme Analysis
+              </h3>
+            </div>
+
+            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc pl-5">
+              <li>Collecting and curating a <strong>~10,000-sample</strong> multimodal dataset including filtering unusable data.</li>
+              <li>Conducting human annotation and model-run experiments focusing on intensity and veracity classification.</li>
+            </ul>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs sm:text-sm font-semibold text-indigo-600 dark:text-indigo-400 group-hover:underline flex items-center gap-1">
+              <span>Inspect Methodology &amp; Setup</span>
+              <span aria-hidden="true">&rarr;</span>
+            </span>
+            <span class="text-xs font-mono text-slate-400">~10k Dataset &bull; VLM</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== EDUCATION, CERTIFICATIONS & HONORS ==================== -->
+    <section id="honors" class="space-y-8">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Academic Standing &amp; Recognition</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">Education, Certifications &amp; Honors</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left Column: Education & Certifications -->
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Education Card -->
+          <div class="p-6 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-cyan-500/10 text-cyan-700 dark:text-cyan-300">Education</span>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Jan 2023 &ndash; Exp. Feb 2027</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">B.Sc. in Computer Science and Engineering</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">United International University (UIU) &bull; Dhaka, Bangladesh</p>
+            <div class="pt-2 flex items-center gap-2">
+              <span class="px-3 py-1 rounded-lg text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
+                CGPA: 3.77 / 4.00 (Summer 2026)
+              </span>
+            </div>
+          </div>
+
+          <!-- Certifications Card -->
+          <div class="p-6 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-indigo-500/10 text-indigo-700 dark:text-indigo-300">Certifications &amp; Training</span>
+              <span class="text-xs font-mono text-emerald-500 font-semibold">Ongoing</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Phitron — Thesis Track</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">
+              Currently enrolled in the competitive Thesis Track of the Phitron software engineering, algorithmic problem-solving, and applied research program.
+            </p>
+            <div class="pt-1 text-xs font-mono text-slate-500 dark:text-slate-400">
+              Languages: Bangla (Native), English (Fluent), Hindi (Conversational)
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Achievements & Volunteering -->
+        <div class="lg:col-span-7">
+          <div class="h-full p-6 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 space-y-5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Achievements &amp; Volunteering</h3>
+              <span class="text-xs font-mono text-slate-400">2023 &ndash; 2026</span>
+            </div>
+
+            <div class="space-y-4">
+              <!-- Honor 1 -->
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-midnight-850/80 border border-slate-200/70 dark:border-slate-800 flex items-start gap-3.5">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center shrink-0 font-bold text-sm">
+                  5x
+                </div>
+                <div>
+                  <h4 class="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Academic Merit Scholarship, United International University</h4>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+                    Awarded across five trimesters: three <strong>25% tuition waivers</strong> (Summer 2023, Fall 2025, Spring 2026) and two <strong>50% tuition waivers</strong> (Summer 2026 and Fall 2026).
+                  </p>
+                </div>
+              </div>
+
+              <!-- Honor 2 -->
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-midnight-850/80 border border-slate-200/70 dark:border-slate-800 flex items-start gap-3.5">
+                <div class="w-9 h-9 rounded-xl bg-cyan-500/15 text-cyan-500 flex items-center justify-center shrink-0 font-bold text-xs font-mono">
+                  #3
+                </div>
+                <div>
+                  <h4 class="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">2nd Runner-Up, Electronics Lab Category — UIU CSE Project Show</h4>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+                    Awarded to Team The Squad for the Hand-Gesture-Controlled Smart Car multi-sensor prototype (Summer 2024 &bull; 7 October 2024).
+                  </p>
+                </div>
+              </div>
+
+              <!-- Honor 3 -->
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-midnight-850/80 border border-slate-200/70 dark:border-slate-800 flex items-start gap-3.5">
+                <div class="w-9 h-9 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center shrink-0 font-bold text-xs font-mono">
+                  CSE
+                </div>
+                <div>
+                  <h4 class="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Certificate of Participation — UIU CSE FEST 2025 Project Show</h4>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+                    Showcased applied engineering prototypes with Team The Squad at the annual UIU CSE FEST exhibition.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Honor 4 -->
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-midnight-850/80 border border-slate-200/70 dark:border-slate-800 flex items-start gap-3.5">
+                <div class="w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0 font-bold text-xs font-mono">
+                  VOL
+                </div>
+                <div>
+                  <h4 class="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Volunteer — IDP Study World Roadshow 2026</h4>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+                    Supported event operations and international student guidance at Hotel Sheraton Dhaka (10 April 2026).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT & COLLABORATION SECTION ==================== -->
+    <section id="contact" class="scroll-mt-24">
+      <div class="rounded-3xl bg-gradient-to-br from-slate-900 via-midnight-900 to-indigo-950 border border-slate-800 p-8 sm:p-10 lg:p-12 text-white shadow-2xl relative overflow-hidden">
+        <div class="pointer-events-none absolute -right-16 -bottom-16 w-80 h-80 rounded-full bg-cyan-500/15 blur-3xl"></div>
+
+        <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Left Pitch -->
+          <div class="lg:col-span-7 space-y-4">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+              Open to Opportunities
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              Let's Build Reliable Software &amp; Advance Applied AI
+            </h2>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+              Actively seeking Software Engineering, AI/ML Engineering, and Applied Research internships or entry-level roles, as well as academic research collaborations in NLP/LLM evaluation, medical AI, and sustainable computing.
+            </p>
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="mailto:pathikkundupk@gmail.com" class="px-5 py-3 rounded-xl text-sm font-semibold bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition-colors">
+                Send Direct Email
+              </a>
+              <button type="button" onclick="copyEmail()" class="px-5 py-3 rounded-xl text-sm font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/15 transition-colors">
+                Copy Email Address
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Contact Channels & Quick Message Composer -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="p-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 space-y-3.5 text-sm">
+              <div class="flex items-center justify-between py-1.5 border-b border-white/10">
+                <span class="text-slate-400 font-mono text-xs">EMAIL</span>
+                <a href="mailto:pathikkundupk@gmail.com" class="font-medium text-cyan-300 hover:underline select-all">pathikkundupk@gmail.com</a>
+              </div>
+              <div class="flex items-center justify-between py-1.5 border-b border-white/10">
+                <span class="text-slate-400 font-mono text-xs">PHONE</span>
+                <a href="tel:+8801805999525" class="font-medium text-slate-200 hover:text-cyan-300">+880 1805-999525</a>
+              </div>
+              <div class="flex items-center justify-between py-1.5 border-b border-white/10">
+                <span class="text-slate-400 font-mono text-xs">GITHUB</span>
+                <a href="https://github.com/Pathik-Kundu" target="_blank" rel="noopener noreferrer" class="font-medium text-slate-200 hover:text-cyan-300 flex items-center gap-1">
+                  <span>github.com/Pathik-Kundu</span>
+                  <span aria-hidden="true">&nearr;</span>
+                </a>
+              </div>
+              <div class="flex items-center justify-between py-1.5 border-b border-white/10">
+                <span class="text-slate-400 font-mono text-xs">LINKEDIN</span>
+                <a href="https://www.linkedin.com/in/pathik-kundu-298b441a4" target="_blank" rel="noopener noreferrer" class="font-medium text-slate-200 hover:text-cyan-300 flex items-center gap-1">
+                  <span>linkedin.com/in/pathik-kundu-298b441a4</span>
+                  <span aria-hidden="true">&nearr;</span>
+                </a>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <span class="text-slate-400 font-mono text-xs">LOCATION</span>
+                <span class="font-medium text-slate-200">Dhaka, Bangladesh</span>
+              </div>
+            </div>
+
+            <!-- Interactive Quick-Message Composer -->
+            <form onsubmit="handleQuickMessage(event)" class="p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono uppercase tracking-wider text-cyan-300">Quick Message</span>
+                <span class="text-[11px] font-mono text-slate-400">Opens Mail Client</span>
+              </div>
+              <input id="quickSubject" type="text" required placeholder="Subject (e.g., SWE / AI Research Opportunity)" class="w-full px-3 py-2 rounded-xl bg-slate-950/60 border border-white/10 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400" />
+              <textarea id="quickBody" rows="2" required placeholder="Hi Pathik, I reviewed your portfolio and would love to connect..." class="w-full px-3 py-2 rounded-xl bg-slate-950/60 border border-white/10 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 resize-none"></textarea>
+              <div class="flex items-center gap-2">
+                <button type="submit" class="flex-1 py-2 px-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-semibold text-xs transition-colors">
+                  Compose Email &nearr;
+                </button>
+                <button type="button" onclick="copyQuickMessage()" class="py-2 px-3 rounded-xl bg-white/10 hover:bg-white/15 text-slate-200 font-mono text-xs transition-colors">
+                  Copy Draft
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-slate-200 dark:border-slate-800/80 py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div>&copy; <span id="currentYear"></span> Pathik Kundu. Built with clean HTML, Tailwind CSS &amp; Vanilla JS.</div>
+      <div class="flex items-center gap-4 font-mono">
+        <a href="https://github.com/Pathik-Kundu" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-500 transition-colors">GitHub</a>
+        <span>&bull;</span>
+        <a href="https://www.linkedin.com/in/pathik-kundu-298b441a4" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-500 transition-colors">LinkedIn</a>
+        <span>&bull;</span>
+        <a href="mailto:pathikkundupk@gmail.com" class="hover:text-cyan-500 transition-colors">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SHARED DETAIL MODAL (PROJECTS & RESEARCH) ==================== -->
+  <div id="detailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm">
+    <div class="w-full max-w-2xl rounded-2xl bg-white dark:bg-midnight-900 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden animate-fade-in">
+      <!-- Modal Header -->
+      <div class="px-6 py-4 bg-slate-50 dark:bg-midnight-950 border-b border-slate-200 dark:border-slate-800 flex items-start justify-between gap-4">
+        <div>
+          <div id="modalCategory" class="text-xs font-mono text-cyan-600 dark:text-cyan-400 mb-1"></div>
+          <h3 id="modalTitle" class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-snug"></h3>
+        </div>
+        <button type="button" onclick="closeDetailModal()" aria-label="Close Modal" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M18 6 6 18M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div id="modalBody" class="p-6 max-h-[70vh] overflow-y-auto space-y-4 text-sm"></div>
+
+      <!-- Modal Footer -->
+      <div id="modalFooter" class="px-6 py-4 bg-slate-50 dark:bg-midnight-950 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3"></div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="px-4 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs sm:text-sm font-medium shadow-xl border border-slate-700 dark:border-slate-200 flex items-center gap-2.5">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <!-- ==================== APPLICATION JAVASCRIPT ==================== -->
+  <script>
+    // ---------- 1. PORTFOLIO DATA ----------
+    const PROJECTS = [
+      {
+        id: 'diabetes-predictor',
+        title: 'Diabetes Risk Predictor',
+        role: 'Individual Project',
+        category: 'ai-ml',
+        categoryLabel: 'AI & ML Pipeline',
+        summary: 'End-to-end diabetes risk-prediction web application built with Python and a Random Forest classifier, deployed as an interactive Gradio app on Hugging Face Spaces.',
+        tech: ['Python', 'scikit-learn', 'Pandas', 'NumPy', 'Gradio', 'Pickle', 'Hugging Face Spaces'],
+        liveUrl: 'https://tinyurl.com/Diabetes-predic',
+        repoUrl: '',
+        architecture: {
+          problem: 'Provide accessible, clinically grounded preliminary diabetes risk screening backed by a validated tabular classification pipeline.',
+          pipeline: [
+            'Implemented missing-value imputation, IQR-based outlier filtering, BMI-derived feature engineering, and feature standardization.',
+            'Evaluated model generalization using a stratified train-test split, five-fold cross-validation, accuracy, and F1-score.',
+            'Serialized the validated Random Forest model with Pickle and deployed an interactive Gradio web interface on Hugging Face Spaces.'
+          ],
+          outcome: 'A publicly accessible, interactive diabetes risk-screening web application backed by a validated Random Forest pipeline.'
+        }
+      },
+      {
+        id: 'uiu-chatbot',
+        title: 'UIU Website Chatbot',
+        role: 'Individual Project',
+        category: 'web-api',
+        categoryLabel: 'Web Scraping & LLM API',
+        summary: 'Domain-focused Python assistant answering queries on UIU admissions, tuition, academic calendars, programs, and scholarship waivers with local caching and Gemini API fallback.',
+        tech: ['Python', 'Gemini REST API', 'Requests', 'Beautiful Soup', 'JSON', 'Regular Expressions', 'Jupyter Notebook'],
+        liveUrl: '',
+        repoUrl: 'https://github.com/Pathik-Kundu/UIU_Chatbot',
+        architecture: {
+          problem: 'Students and applicants need accurate, fast answers about UIU policies, tuition, and waivers without manually digging through multiple university pages.',
+          pipeline: [
+            'Extracted structured university website content using Requests and Beautiful Soup with regex normalization and local JSON caching.',
+            'Integrated the Gemini REST API with a UIU-first grounded response strategy for institutional accuracy.',
+            'Engineered a seamless general-model fallback mechanism when relevant university-specific data is unavailable.'
+          ],
+          outcome: 'Reliable university-grounded query responses with low-latency local caching and intelligent fallback handling.'
+        }
+      },
+      {
+        id: 'smart-car',
+        title: 'Hand-Gesture-Controlled Smart Car',
+        role: 'Team The Squad',
+        category: 'embedded',
+        categoryLabel: 'Hardware & Embedded Systems',
+        summary: 'Arduino-based gesture-controlled vehicle combining wireless motion control, ultrasonic obstacle detection, heart-rate monitoring, and emergency SMS telemetry.',
+        tech: ['Arduino', 'MPU6050', 'L298N', 'DC Motors', 'HC-SR04', 'MAX30102', 'SIM800L', 'LCD1602'],
+        liveUrl: '',
+        repoUrl: '',
+        architecture: {
+          problem: 'Design an assistive mobility prototype integrating intuitive hand-gesture navigation with real-time collision avoidance and emergency health alerts.',
+          pipeline: [
+            'Engineered wireless motion control using an MPU6050 accelerometer/gyroscope paired with an L298N motor driver and four DC motors.',
+            'Integrated HC-SR04 ultrasonic obstacle detection and buzzer alerts for automated collision prevention.',
+            'Added MAX30102 pulse-oximetry heart-rate monitoring, LCD1602 live telemetry display, and SIM800L emergency SMS alerts.'
+          ],
+          outcome: 'Working multi-sensor prototype awarded 2nd Runner-Up in the Electronics Lab Category at UIU CSE Project Show (Summer 2024).'
+        }
+      }
+    ];
+
+    const RESEARCH_PAPERS = [
+      {
+        id: 'energy-os',
+        title: 'Workload-Based Energy Efficiency Analysis of Native and Virtualized Operating Systems for Sustainable Computing: An Experimental Study on Modern Computing Platforms',
+        role: 'First Author • Conference Manuscript',
+        status: 'Submitted',
+        domain: 'Sustainable Computing',
+        highlights: [
+          'Conducted energy-consumption measurements using EnergiBridge across Windows, macOS, and Linux environments.',
+          'Benchmarked native and virtualized operating systems under controlled workloads.'
+        ],
+        methodology: 'Profiled hardware-level CPU and package power telemetry using EnergiBridge across bare-metal and virtualized environments on Windows, macOS, and Linux. Evaluated joule-per-task overhead across standardized compute and memory workloads to inform sustainable systems deployment.',
+        tags: ['EnergiBridge', 'Windows / macOS / Linux', 'Virtualization', 'Green Computing']
+      },
+      {
+        id: 'breast-cancer',
+        title: 'Radiological Metadata and Deep Image Feature Analysis for Breast Cancer Classification: An Explainable Multimodal Evaluation on CBIS-DDSM',
+        role: 'First Author',
+        status: 'Working Paper',
+        domain: 'Medical AI',
+        highlights: [
+          'Performed preprocessing, feature selection, and hyperparameter tuning for the tabular-data modeling component.',
+          'Trained and evaluated SVM, Logistic Regression, Random Forest, Gradient Boosting, and K-Nearest Neighbors (KNN) classifiers.'
+        ],
+        methodology: 'Combined structured clinical/radiological metadata (breast density, pathology assessments, abnormality descriptors) with deep mammography representations on the CBIS-DDSM dataset to benchmark interpretable multimodal classification.',
+        tags: ['CBIS-DDSM', 'Tabular + Vision Fusion', 'Explainable AI', 'scikit-learn']
+      },
+      {
+        id: 'banglish-llm',
+        title: 'Can LLM Judges Evaluate Banglish? A Meta-Evaluation of Automatic Evaluators on Romanized Code-Mixed Bangla',
+        role: 'First Author',
+        status: 'Working Paper',
+        domain: 'NLP & LLM Evaluation',
+        highlights: [
+          'Prepared the evaluation pipeline and conducted human annotation and dataset verification.',
+          'Curating a human-verified gold dataset alongside an AI-annotated silver dataset under established annotation guidelines.'
+        ],
+        methodology: 'Designed a meta-evaluation benchmark measuring correlation and inter-annotator agreement between native human annotators and automatic LLM judges on low-resource Romanized code-mixed Bangla ("Banglish").',
+        tags: ['LLM-as-a-Judge', 'Code-Mixed NLP', 'Gold/Silver Datasets', 'Human Annotation']
+      },
+      {
+        id: 'meme-analysis',
+        title: 'Context-Wise Multimodal Meme Analysis',
+        role: 'Ongoing Research',
+        status: 'Ongoing Research',
+        domain: 'Multimodal Vision',
+        highlights: [
+          'Collecting and curating a ~10,000-sample multimodal dataset including filtering unusable data.',
+          'Conducting human annotation and model-run experiments focusing on intensity and veracity classification.'
+        ],
+        methodology: 'Constructing a ~10,000-sample image-text meme corpus with multi-stage data quality filtering and human-verified annotations to evaluate vision-language models on contextual intensity and factual veracity.',
+        tags: ['~10k Multimodal Dataset', 'Vision-Language Models', 'Data Curation', 'Veracity Classification']
+      }
+    ];
+
+    // ---------- 2. APPLICATION STATE ----------
+    let currentProjectFilter = 'all';
+    let currentResearchFilter = 'all';
+    let currentSkillCategory = 'all';
+    let commandHistory = [];
+    let historyIndex = -1;
+
+    // ---------- 3. THEME MANAGEMENT ----------
+    function initTheme() {
+      const savedTheme = localStorage.getItem('pk_portfolio_theme');
+      const htmlEl = document.documentElement;
+      if (savedTheme === 'light') {
+        htmlEl.classList.remove('dark');
+      } else {
+        htmlEl.classList.add('dark');
+      }
+      updateThemeIcons();
+    }
+
+    function toggleTheme() {
+      const htmlEl = document.documentElement;
+      const isDark = htmlEl.classList.toggle('dark');
+      localStorage.setItem('pk_portfolio_theme', isDark ? 'dark' : 'light');
+      updateThemeIcons();
+    }
+
+    function updateThemeIcons() {
+      const isDark = document.documentElement.classList.contains('dark');
+      const sunIcon = document.getElementById('sunIcon');
+      const moonIcon = document.getElementById('moonIcon');
+      if (!sunIcon || !moonIcon) return;
+      if (isDark) {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+
+    // ---------- 4. INTERACTIVE TERMINAL WIDGET ----------
+    function handleTerminalSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('terminalInput');
+      if (!input) return;
+      const rawCmd = input.value.trim();
+      if (!rawCmd) return;
+
+      commandHistory.unshift(rawCmd);
+      historyIndex = -1;
+      input.value = '';
+      runTerminalCommand(rawCmd);
+    }
+
+    function runTerminalCommand(rawCmd) {
+      const output = document.getElementById('terminalOutput');
+      if (!output) return;
+      const cmd = rawCmd.toLowerCase().trim();
+
+      if (cmd === 'clear') {
+        output.innerHTML = '<div class="text-slate-400">Terminal cleared. Type <span class="text-cyan-400">help</span> for available commands.</div>';
+        return;
+      }
+
+      let responseHtml = '';
+      switch (cmd) {
+        case 'help':
+          responseHtml = `
+            <span class="text-cyan-300">Available Commands:</span><br/>
+            &bull; <span class="text-emerald-400">about</span> — Summary of Pathik's background &amp; academic standing<br/>
+            &bull; <span class="text-emerald-400">skills</span> — Programming, ML/DL, Research, Web/APIs &amp; AI tools<br/>
+            &bull; <span class="text-emerald-400">projects</span> — Key software, ML &amp; embedded projects<br/>
+            &bull; <span class="text-emerald-400">research</span> — List of 4 submitted, working &amp; ongoing manuscripts<br/>
+            &bull; <span class="text-emerald-400">honors</span> — Scholarships, competition honors &amp; volunteering<br/>
+            &bull; <span class="text-emerald-400">contact</span> — Direct email, phone, GitHub &amp; LinkedIn<br/>
+            &bull; <span class="text-emerald-400">clear</span> — Clear terminal output
+          `;
+          break;
+        case 'about':
+          responseHtml = `
+            <span class="text-cyan-300 font-semibold">Pathik Kundu</span> — Software Engineer &amp; AI/ML Researcher.<br/>
+            Education: B.Sc. in CSE @ United International University (CGPA: 3.77/4.00, Exp. Feb 2027).<br/>
+            Focus: End-to-end Python/Web apps, REST APIs, ML pipelines &amp; LLM Evaluation.
+          `;
+          break;
+        case 'skills':
+          responseHtml = `
+            <span class="text-indigo-300 font-semibold">[Technical Arsenal]</span><br/>
+            &bull; Languages: Python, Java, C, JavaScript<br/>
+            &bull; ML/DL: PyTorch, scikit-learn, Neural Networks, NLP, Computer Vision, TensorFlow/Keras<br/>
+            &bull; Web &amp; APIs: REST APIs, Gemini REST API, Requests, Beautiful Soup, HTML/CSS, Gradio<br/>
+            &bull; Data &amp; Tools: NumPy, Pandas, MySQL, Git/GitHub, EnergiBridge, Claude Code, Codex
+          `;
+          break;
+        case 'projects':
+          responseHtml = `
+            <span class="text-emerald-300 font-semibold">[Featured Projects]</span><br/>
+            1. <span class="text-white">Diabetes Risk Predictor</span> — Random Forest + Gradio on Hugging Face Spaces<br/>
+            2. <span class="text-white">UIU Website Chatbot</span> — Web scraping + caching + Gemini REST API<br/>
+            3. <span class="text-white">Hand-Gesture-Controlled Smart Car</span> — 2nd Runner-Up @ UIU CSE Project Show
+          `;
+          break;
+        case 'research':
+          responseHtml = `
+            <span class="text-purple-300 font-semibold">[Research Manuscripts (4)]</span><br/>
+            1. <span class="text-emerald-400">[Submitted]</span> OS Energy Efficiency Analysis (1st Author, Sustainable Computing)<br/>
+            2. <span class="text-amber-300">[Working]</span> Multimodal Breast Cancer Classification on CBIS-DDSM (1st Author)<br/>
+            3. <span class="text-amber-300">[Working]</span> LLM Judges Meta-Evaluation on Banglish (1st Author)<br/>
+            4. <span class="text-purple-300">[Ongoing]</span> Context-Wise Multimodal Meme Analysis (~10k dataset)
+          `;
+          break;
+        case 'honors':
+        case 'awards':
+          responseHtml = `
+            <span class="text-amber-300 font-semibold">[Scholarships &amp; Honors]</span><br/>
+            &bull; 5x Academic Merit Scholarship @ UIU (3x 25% + 2x 50% tuition waivers)<br/>
+            &bull; 2nd Runner-Up — Electronics Lab Category, UIU CSE Project Show (Summer 2024)<br/>
+            &bull; Participant — UIU CSE FEST 2025 Project Show &bull; Volunteer — IDP Roadshow 2026
+          `;
+          break;
+        case 'socials':
+        case 'contact':
+          responseHtml = `
+            <span class="text-emerald-300 font-semibold">[Contact &amp; Social Channels]</span><br/>
+            Email: <a href="mailto:pathikkundupk@gmail.com" class="text-cyan-300 underline">pathikkundupk@gmail.com</a> | Phone: +880 1805-999525<br/>
+            GitHub: <a href="https://github.com/Pathik-Kundu" target="_blank" rel="noopener noreferrer" class="text-cyan-300 underline">github.com/Pathik-Kundu</a><br/>
+            LinkedIn: <a href="https://www.linkedin.com/in/pathik-kundu-298b441a4" target="_blank" rel="noopener noreferrer" class="text-cyan-300 underline">linkedin.com/in/pathik-kundu-298b441a4</a>
+          `;
+          break;
+        default:
+          responseHtml = `<span class="text-rose-400">Command not found:</span> ${escapeHtml(rawCmd)}. Type <span class="text-cyan-400">help</span> for valid commands.`;
+      }
+
+      const entry = document.createElement('div');
+      entry.innerHTML = `
+        <div class="text-emerald-400">pathik@uiu-cse:~$ <span class="text-white">${escapeHtml(rawCmd)}</span></div>
+        <div class="mt-1 pl-2 border-l-2 border-cyan-500/50 text-slate-200">${responseHtml}</div>
+      `;
+      output.appendChild(entry);
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function initTerminalListeners() {
+      const input = document.getElementById('terminalInput');
+      if (!input) return;
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowUp' && commandHistory.length > 0) {
+          e.preventDefault();
+          historyIndex = Math.min(historyIndex + 1, commandHistory.length - 1);
+          input.value = commandHistory[historyIndex];
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          historyIndex = Math.max(historyIndex - 1, -1);
+          input.value = historyIndex === -1 ? '' : commandHistory[historyIndex];
+        }
+      });
+    }
+
+    // ---------- 5. PROJECTS RENDERING & DETAIL MODAL ----------
+    function filterProjects(category) {
+      currentProjectFilter = category;
+      document.querySelectorAll('[data-proj-filter]').forEach(btn => {
+        const isActive = btn.getAttribute('data-proj-filter') === category;
+        btn.className = isActive
+          ? 'px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-cyan-600 text-white shadow-sm transition-all'
+          : 'px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-all';
+      });
+      renderProjects();
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      if (!grid) return;
+      const filtered = currentProjectFilter === 'all'
+        ? PROJECTS
+        : PROJECTS.filter(p => p.category === currentProjectFilter);
+
+      grid.innerHTML = filtered.map(proj => `
+        <article class="group flex flex-col justify-between p-6 rounded-2xl bg-white/85 dark:bg-midnight-900/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 hover:border-cyan-500/50 hover:shadow-glow-cyan hover:-translate-y-1 transition-all duration-300">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20">
+                ${proj.categoryLabel}
+              </span>
+              <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">${proj.role}</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+              ${proj.title}
+            </h3>
+
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+              ${proj.summary}
+            </p>
+
+            <!-- Tech Pills -->
+            <div class="flex flex-wrap gap-1.5 mt-4">
+              ${proj.tech.map(t => `<span class="px-2.5 py-0.5 rounded-md text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">${t}</span>`).join('')}
+            </div>
+          </div>
+
+          <!-- Card Footer Actions -->
+          <div class="mt-6 pt-4 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between gap-3">
+            <button type="button" onclick="openProjectModal('${proj.id}')" class="text-xs sm:text-sm font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">
+              <span>Architecture &amp; Details</span>
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+
+            <div class="flex items-center gap-2">
+              ${proj.repoUrl ? `<a href="${proj.repoUrl}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-midnight-850 hover:bg-slate-200 dark:hover:bg-midnight-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">GitHub &nearr;</a>` : ''}
+              ${proj.liveUrl ? `<a href="${proj.liveUrl}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg text-xs font-mono bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border border-indigo-500/25 transition-colors">Live App &nearr;</a>` : ''}
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function openProjectModal(projectId) {
+      const proj = PROJECTS.find(p => p.id === projectId);
+      const modal = document.getElementById('detailModal');
+      if (!proj || !modal) return;
+
+      document.getElementById('modalCategory').textContent = `${proj.categoryLabel} • ${proj.role}`;
+      document.getElementById('modalTitle').textContent = proj.title;
+
+      document.getElementById('modalBody').innerHTML = `
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-midnight-850 border border-slate-200/70 dark:border-slate-800">
+          <div class="text-xs font-mono uppercase tracking-wider text-cyan-600 dark:text-cyan-400 mb-1">Problem Statement</div>
+          <p class="text-slate-700 dark:text-slate-200">${proj.architecture.problem}</p>
+        </div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2">System Architecture &amp; Pipeline</div>
+          <ul class="space-y-2 list-disc pl-5 text-slate-600 dark:text-slate-300">
+            ${proj.architecture.pipeline.map(step => `<li>${step}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25">
+          <div class="text-xs font-mono uppercase tracking-wider text-emerald-700 dark:text-emerald-300 mb-1">Key Outcome</div>
+          <p class="text-slate-800 dark:text-slate-100 font-medium">${proj.architecture.outcome}</p>
+        </div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Technologies &amp; Stack</div>
+          <div class="flex flex-wrap gap-1.5">
+            ${proj.tech.map(t => `<span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">${t}</span>`).join('')}
+          </div>
+        </div>
+      `;
+
+      document.getElementById('modalFooter').innerHTML = `
+        <div class="flex items-center gap-2">
+          ${proj.repoUrl ? `<a href="${proj.repoUrl}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl text-xs font-mono bg-slate-200 dark:bg-midnight-800 text-slate-800 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">View GitHub Repository &nearr;</a>` : ''}
+          ${proj.liveUrl ? `<a href="${proj.liveUrl}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl text-xs font-mono bg-cyan-600 text-white hover:bg-cyan-500 transition-colors">Open Live Application &nearr;</a>` : ''}
+        </div>
+        <button type="button" onclick="closeDetailModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-900">Close</button>
+      `;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    // ---------- 6. RESEARCH FILTERING & DETAIL MODAL ----------
+    function filterResearch(status) {
+      currentResearchFilter = status;
+      document.querySelectorAll('[data-res-filter]').forEach(btn => {
+        const isActive = btn.getAttribute('data-res-filter') === status;
+        btn.className = isActive
+          ? 'px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600 text-white shadow-sm transition-all'
+          : 'px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-indigo-500/50 transition-all';
+      });
+
+      document.querySelectorAll('.research-card').forEach(card => {
+        const cardStatus = card.getAttribute('data-res-status');
+        if (status === 'all' || cardStatus === status) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function openResearchModal(paperId) {
+      const paper = RESEARCH_PAPERS.find(p => p.id === paperId);
+      const modal = document.getElementById('detailModal');
+      if (!paper || !modal) return;
+
+      document.getElementById('modalCategory').textContent = `${paper.status} • ${paper.domain} • ${paper.role}`;
+      document.getElementById('modalTitle').textContent = paper.title;
+
+      document.getElementById('modalBody').innerHTML = `
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-midnight-850 border border-slate-200/70 dark:border-slate-800">
+          <div class="text-xs font-mono uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1">Experimental Scope &amp; Methodology</div>
+          <p class="text-slate-700 dark:text-slate-200 leading-relaxed">${paper.methodology}</p>
+        </div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-wider text-cyan-600 dark:text-cyan-400 mb-2">Key Contributions</div>
+          <ul class="space-y-2 list-disc pl-5 text-slate-600 dark:text-slate-300">
+            ${paper.highlights.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Research Keywords &amp; Tools</div>
+          <div class="flex flex-wrap gap-1.5">
+            ${paper.tags.map(tag => `<span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-100 dark:bg-midnight-850 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">${tag}</span>`).join('')}
+          </div>
+        </div>
+      `;
+
+      document.getElementById('modalFooter').innerHTML = `
+        <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Domain: ${paper.domain}</span>
+        <button type="button" onclick="closeDetailModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-900">Close</button>
+      `;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeDetailModal() {
+      const modal = document.getElementById('detailModal');
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // ---------- 7. INTERACTIVE TECHNICAL ARSENAL FILTERING ----------
+    function selectSkillCategory(category) {
+      currentSkillCategory = category;
+      document.querySelectorAll('[data-skill-tab]').forEach(btn => {
+        const isActive = btn.getAttribute('data-skill-tab') === category;
+        btn.className = isActive
+          ? 'px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-cyan-600 text-white shadow-sm transition-all'
+          : 'px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-white dark:bg-midnight-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-all';
+      });
+      filterSkills();
+    }
+
+    function filterSkills() {
+      const searchInput = document.getElementById('skillSearchInput');
+      const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+      const cards = document.querySelectorAll('.skill-card');
+      const emptyState = document.getElementById('skillsEmptyState');
+      let visibleCardsCount = 0;
+
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        const matchesCat = currentSkillCategory === 'all' || cardCat === currentSkillCategory;
+        const pills = card.querySelectorAll('.skill-pill');
+        const countBadge = card.querySelector('.skill-count');
+        let visiblePillsCount = 0;
+
+        pills.forEach(pill => {
+          const text = pill.textContent.toLowerCase();
+          if (!query || text.includes(query)) {
+            pill.classList.remove('hidden');
+            visiblePillsCount++;
+          } else {
+            pill.classList.add('hidden');
+          }
+        });
+
+        if (countBadge) {
+          countBadge.textContent = visiblePillsCount;
+        }
+
+        if (matchesCat && visiblePillsCount > 0) {
+          card.classList.remove('hidden');
+          visibleCardsCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (emptyState) {
+        if (visibleCardsCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    // ---------- 8. QUICK MESSAGE & CLIPBOARD UTILITIES ----------
+    function handleQuickMessage(e) {
+      e.preventDefault();
+      const subjectEl = document.getElementById('quickSubject');
+      const bodyEl = document.getElementById('quickBody');
+      const subject = encodeURIComponent(subjectEl ? subjectEl.value.trim() : '');
+      const body = encodeURIComponent(bodyEl ? bodyEl.value.trim() : '');
+      window.location.href = `mailto:pathikkundupk@gmail.com?subject=${subject}&body=${body}`;
+    }
+
+    function copyQuickMessage() {
+      const subjectEl = document.getElementById('quickSubject');
+      const bodyEl = document.getElementById('quickBody');
+      const subject = subjectEl && subjectEl.value.trim() ? `Subject: ${subjectEl.value.trim()}\n\n` : '';
+      const body = bodyEl && bodyEl.value.trim() ? bodyEl.value.trim() : 'Hi Pathik, I reviewed your portfolio and would love to connect.';
+      copyTextToClipboard(`${subject}${body}`, 'Message draft copied to clipboard!');
+    }
+
+    function copyEmail() {
+      copyTextToClipboard('pathikkundupk@gmail.com', 'Copied pathikkundupk@gmail.com to clipboard!');
+    }
+
+    function copyTextToClipboard(text, successMsg) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(successMsg);
+        }).catch(() => {
+          fallbackCopyText(text, successMsg);
+        });
+      } else {
+        fallbackCopyText(text, successMsg);
+      }
+    }
+
+    function fallbackCopyText(text, successMsg) {
+      const tempInput = document.createElement('textarea');
+      tempInput.value = text;
+      tempInput.style.position = 'fixed';
+      tempInput.style.opacity = '0';
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg);
+      } catch (err) {
+        showToast('Email: pathikkundupk@gmail.com');
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      if (!toast || !toastMessage) return;
+      toastMessage.textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    }
+
+    // ---------- 9. INITIALIZE ON LOAD ----------
+    window.addEventListener('DOMContentLoaded', () => {
+      const yearEl = document.getElementById('currentYear');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      initTheme();
+      initTerminalListeners();
+      filterProjects('all');
+      filterResearch('all');
+      selectSkillCategory('all');
+
+      const modal = document.getElementById('detailModal');
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeDetailModal();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeDetailModal();
+      });
+    });
+  </script>
+</body>
+</html>
